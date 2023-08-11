@@ -1,0 +1,29 @@
+{
+  "name": "employee-tracker",
+  "version": "1.0.0",
+  "description": "employee_tracker",
+  "main": "server.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "test",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jarrodbb/Employee-Tracker.git"
+  },
+  "author": "jarrod Blanning",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jarrodbb/Employee-Tracker/issues"
+  },
+  "homepage": "https://github.com/jarrodbb/Employee-Tracker#readme",
+  "dependencies": {
+    "inquirer": "^8.2.4",
+    "express": "^4.17.1",
+    "jshint": "^2.12.0",
+    "mysql2": "^2.2.5"
+  }
+}
