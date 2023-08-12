@@ -13,6 +13,32 @@ const db = mysql.createConnection(
   console.log(`Connected to the employee_db database.`)
 );
 
+roles.get("/:department", (req, res) => {
+  const sql = "SELECT id FROM department WHERE department_name = ?";
+
+  const department = req.params.department;
+
+  if (!department) {
+    res.status(400).json({
+      message: "error",
+      error: "department missing",
+    });
+    return;
+  }
+
+  db.query(sql, [department], (err, result) => {
+    if (err) {
+      res
+        .status(500)
+        .json({ message: "error", error: "something bad happened" });
+      console.error(err);
+      return;
+    }
+    console.log(Object.values(result[0]));
+    res.json(Object.values(result[0]));
+  });
+});
+
 roles.post("/", (req, res) => {
   const sql =
     "SELECT EXISTS(SELECT * FROM department where department_name = ?)";
@@ -36,7 +62,6 @@ roles.post("/", (req, res) => {
     });
     return;
   }
-  
 
   db.query(sql, [newRole.department], (err, result) => {
     if (err) {

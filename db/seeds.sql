@@ -12,11 +12,17 @@ VALUES ("Marketing Manager", 150000, 1),
 ("assistant Brewer", 65000, 3),
 ("delivery driver", 50000, 4);
 
+INSERT INTO manager (first_name, last_name)
+VALUES ("Tim", "Watson"),
+("Tay", "Keleher"),
+("John", "Blanning");
+
+
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
-VALUES ("jarrod", "blanning", 2, 0),
-("Amanda", "Baker", 1, 0),
-("Ryan", "Anderson", 3, 0),
-("Cam", "Allum", 4, 0),
-("Mitch", "Wirth", 5, 10),
-("Dave", "Johnston", 6, 20);
+VALUES ("jarrod", "blanning", 2, 1),
+("Amanda", "Baker", 1, 1),
+("Ryan", "Anderson", 3, 2),
+("Cam", "Allum", 4, 1),
+("Mitch", "Wirth", 5, 3),
+("Dave", "Johnston", 6, 3);
 

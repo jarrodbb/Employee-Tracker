@@ -42,4 +42,8 @@ employee.get("/", (req, res) => {
   });
 });
 
+employee.post("/", (req, res) => {
+    const sql = "INSERT INTO employee (first_name, last_name, role) VALUES (?)"
+})
+
 module.exports = employee;

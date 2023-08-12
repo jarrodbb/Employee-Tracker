@@ -14,19 +14,34 @@ const db = mysql.createConnection(
 );
 
 department.get("/", (req, res) => {
-  const sql = "SELECT id, department_name FROM department";
-  db.query(sql, (err, rows) => {
+  
+});
+
+department.get("/:department", (req, res) => {
+  const sql =
+    "SELECT EXISTS(SELECT * FROM department where department_name = ?)";
+
+  const department = req.params.department;
+
+  if (!department) {
+    res.status(400).json({
+      message: "error",
+      error: "department missing",
+    });
+    return;
+  }
+
+  db.query(sql, [department], (err, result) => {
     if (err) {
       res
         .status(500)
-        .json({ message: "error", error: "something unexpected happened" });
+        .json({ message: "error", error: "something bad happened" });
       console.error(err);
       return;
     }
-
+    // console.log(result)
     res.json({
-      message: "success",
-      data: rows,
+      exisit: Object.values(result[0]),
     });
   });
 });

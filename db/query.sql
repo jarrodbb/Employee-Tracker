@@ -17,3 +17,4 @@ department.department_name AS Department
 FROM employee
 JOIN role ON employee.role_id = role.id
 JOIN department ON role.department_id = department.id;
+
