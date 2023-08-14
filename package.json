@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "test",
-    "start": "node server.js"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -22,10 +22,8 @@
   "homepage": "https://github.com/jarrodbb/Employee-Tracker#readme",
   "dependencies": {
     "console.table": "^0.10.0",
-    "express": "^4.17.1",
     "inquirer": "^8.2.4",
     "jshint": "^2.12.0",
-    "mysql2": "^2.2.5",
-    "node-fetch": "^2.6.1"
+    "mysql2": "^2.2.5"
   }
 }

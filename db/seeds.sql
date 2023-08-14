@@ -12,11 +12,6 @@ VALUES ("Marketing Manager", 150000, 1),
 ("assistant Brewer", 65000, 3),
 ("delivery driver", 50000, 4);
 
-INSERT INTO manager (first_name, last_name)
-VALUES ("Tim", "Watson"),
-("Tay", "Keleher"),
-("John", "Blanning");
-
 
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
 VALUES ("jarrod", "blanning", 2, 1),
