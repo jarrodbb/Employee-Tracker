@@ -1,6 +1,9 @@
+//Import inquirer
 const inquirer = require("inquirer");
+// Import connection
 const db = require("./db/connection");
 
+// Function to get all the departments from db
 function getDepartment() {
   const sql = "SELECT * FROM department";
 
@@ -11,7 +14,9 @@ function getDepartment() {
   });
 }
 
+//function to add department to db
 function addDepartment() {
+  //run second inquirer prompt
   inquirer
     .prompt([
       {
@@ -21,9 +26,9 @@ function addDepartment() {
       },
     ])
     .then(({ dep }) => {
-      const sql = `INSERT INTO department (department_name) VALUES ('${dep}')`;
+      const sql = `INSERT INTO department (department_name) VALUES (?)`;
 
-      db.query(sql, (err, results) => {
+      db.query(sql, [dep], (err, results) => {
         if (err) throw err;
         console.log("department addded");
         run();
@@ -31,6 +36,7 @@ function addDepartment() {
     });
 }
 
+// Function to view all roles in db
 function viewRoles() {
   const sql = `
           SELECT 
@@ -49,7 +55,9 @@ function viewRoles() {
   });
 }
 
+// Function to add a role to db
 function addRole() {
+  // Get all departments to be used in inquirer prompt
   const sql = "SELECT * FROM department";
   db.query(sql, (err, rows) => {
     if (err) {
@@ -64,6 +72,7 @@ function addRole() {
     });
 
     inquirer
+      //run second inquirer prompt
       .prompt([
         {
           type: "input",
@@ -98,6 +107,7 @@ function addRole() {
   });
 }
 
+// Function to view all employees
 function allEmployees() {
   const sql = `
     SELECT
@@ -120,8 +130,10 @@ function allEmployees() {
   });
 }
 
+// Function to add employee to db
 function addEmployee() {
   let roleList = {};
+  //Get all roles to be used in inquirer prompt
   const sql = "SELECT * FROM role";
   db.query(sql, (err, rows) => {
     if (err) {
@@ -134,7 +146,7 @@ function addEmployee() {
       };
     });
   });
-
+  // get all employees  to be used in inquirer prompt
   const newSql = "SELECT * FROM employee";
   db.query(newSql, (err, rows) => {
     if (err) {
@@ -149,6 +161,7 @@ function addEmployee() {
     });
 
     inquirer
+      //run second inquirer prompt
       .prompt([
         {
           type: "input",
@@ -190,8 +203,10 @@ function addEmployee() {
   });
 }
 
+// Function to update an employee's role in db
 function updateEmployeeRole() {
   let listOfEmployee = {};
+  // get all employees to be used in inquirer prompt
   const sql = "SELECT * FROM employee";
   db.query(sql, (err, rows) => {
     if (err) {
@@ -204,7 +219,7 @@ function updateEmployeeRole() {
       };
     });
   });
-
+  // get all roles to be used in inquirer prompt
   const newSql = "SELECT * FROM role";
   db.query(newSql, (err, rows) => {
     if (err) {
@@ -219,6 +234,7 @@ function updateEmployeeRole() {
     });
 
     inquirer
+      //run second inquirer prompt
       .prompt([
         {
           type: "list",
@@ -249,7 +265,9 @@ function updateEmployeeRole() {
   });
 }
 
+//Function to get employees and their departments from db
 function getEmployeesAndDepartment() {
+  //get all employees to be used in inquirer prompt
   const sql = "SELECT * FROM employee";
   db.query(sql, (err, rows) => {
     if (err) {
@@ -263,6 +281,7 @@ function getEmployeesAndDepartment() {
     });
 
     inquirer
+      //run second inquirer prompt
       .prompt([
         {
           type: "list",
@@ -294,6 +313,7 @@ function getEmployeesAndDepartment() {
   });
 }
 
+// Run inquirer
 function run() {
   inquirer
     .prompt([
@@ -315,6 +335,7 @@ function run() {
       },
     ])
     .then(({ question }) => {
+      //if statements to check what the user has selected
       if (question === "View All Departments") {
         getDepartment();
       }
@@ -346,6 +367,7 @@ function run() {
     });
 }
 
+//connect to db and run inquirer
 db.connect((err) => {
   if (err) throw err;
   console.log(`Connected to the employee_db database.`);
