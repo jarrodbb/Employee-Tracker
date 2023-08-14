@@ -72,6 +72,11 @@ run in the terminal npm start - this starts the application
 
 [package.json](https://github.com/jarrodbb/Employee-Tracker/blob/main/package.json)
 
+#### Video Demo
+[YouTube](https://youtu.be/l4JYYz--8Cs)
+[google drive](https://drive.google.com/file/d/1b2EzQaLP-VxGsQZUOGXBAtqe30z3PAVk/view)
+[Mp4}(https://github.com/jarrodbb/Employee-Tracker/blob/main/assets/.DS_Store)
+
 ## Usage
 
 #### When Running the application, the user will be presented with a list of options. Use the arrow keys to select the option
